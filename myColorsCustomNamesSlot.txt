@@ -1,0 +1,11 @@
+//myColorsCustomNamesSlot.txt
+
+// Create a custom slot of type LIST_OF_NAMES and paste in these values
+//	to be pasted in on 'Custom SLOT Types' box in Interaction Model screen
+//  (don't paste in the comments!)
+
+
+Pat
+Tom
+Bill
+Dave
