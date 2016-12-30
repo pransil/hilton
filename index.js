@@ -1,12 +1,7 @@
 'use strict';
 
 /**
- * This sample demonstrates a simple skill built with the Amazon Alexa Skills Kit.
- * The Intent Schema, Custom Slots, and Sample Utterances for this skill, as well as
- * testing instructions are located at http://amzn.to/1LzFrj6
- *
- * For additional samples, visit the Alexa Skills Kit Getting Started guide at
- * http://amzn.to/1LGWsLG
+ * Example of the kinds of things that could be done for a hotel.
  */
 
 
@@ -16,20 +11,20 @@ function buildSpeechletResponse(title, output, repromptText, shouldEndSession) {
     return {
         outputSpeech: {
             type: 'PlainText',
-            text: output,
+            text: output
         },
         card: {
             type: 'Simple',
             title: `SessionSpeechlet - ${title}`,
-            content: `SessionSpeechlet - ${output}`,
+            content: `SessionSpeechlet - ${output}`
         },
         reprompt: {
             outputSpeech: {
                 type: 'PlainText',
-                text: repromptText,
-            },
+                text: repromptText
+            }
         },
-        shouldEndSession,
+        shouldEndSession
     };
 }
 
@@ -37,7 +32,7 @@ function buildResponse(sessionAttributes, speechletResponse) {
     return {
         version: '1.0',
         sessionAttributes,
-        response: speechletResponse,
+        response: speechletResponse
     };
 }
 
@@ -48,12 +43,12 @@ function getWelcomeResponse(callback) {
     // If we wanted to initialize the session to have some attributes we could add those here.
     const sessionAttributes = {};
     const cardTitle = 'Welcome';
-    const speechOutput = 'Welcome to the Alexa Skills Kit sample. ' +
-        'Please tell me your favorite color by saying, my favorite color is red. ' ;
+    const speechOutput = 'Hi Rich. Welcome the San Francisco Hilton. ' +
+        'I can help you in many ways. ' +
+        ' I can control your TV, play music, order room service and answer many questions ' ;
     // If the user either does not reply to the welcome message or says something that is not
     // understood, they will be prompted again with this text.
-    const repromptText = 'Please tell me your favorite color by saying, ' +
-        'my favorite color is red';
+    const repromptText = 'Any time you want me just say Alexa Hilton and ask your question.';
     const shouldEndSession = false;
 
     callback(sessionAttributes,
@@ -62,46 +57,45 @@ function getWelcomeResponse(callback) {
 
 function handleSessionEndRequest(callback) {
     const cardTitle = 'Session Ended';
-    const speechOutput = 'Thank you for trying the Alexa Skills Kit sample. Have a nice day!';
+    const speechOutput = 'Just let me know when you need something else. Have a nice day!';
     // Setting this to true ends the session and exits the skill.
     const shouldEndSession = true;
 
     callback({}, buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
 }
 
-function createFavoriteColorAttributes(favoriteColor) {
+function createRoomNumberAttributes(roomNumber) {
     return {
-        favoriteColor,
+        roomNumber,
     };
 }
 
-function createFavoriteNameAttributes(favoriteName) {
+function createCheckoutTimeAttributes(checkoutTime) {
     return {
-        favoriteName,
+        checkoutTime,
     };
 }
 
 /**
- * Sets the color in the session and prepares the speech to reply to the user.
+ * Sets the room number in the session and prepares the speech to reply to the user.
  */
-function setColorInSession(intent, session, callback) {
+function setRoomNumberInSession(intent, session, callback) {
     const cardTitle = intent.name;
-    const favoriteColorSlot = intent.slots.Color;
+    const roomNumberSlot = intent.slots.roomNumber;
     let repromptText = '';
     let sessionAttributes = {};
     const shouldEndSession = false;
     let speechOutput = '';
 
-    if (favoriteColorSlot) {
-        const favoriteColor = favoriteColorSlot.value;
-        sessionAttributes = createFavoriteColorAttributes(favoriteColor);
-        speechOutput = `I now know your favorite color is ${favoriteColor}. You can ask me ` +
-            "your favorite color by saying, what's my favorite color?";
-        repromptText = "You can ask me your favorite color by saying, what's my favorite color?";
+    if (roomNumberSlot) {
+        const roomNumber = roomNumberSlot.value;
+        sessionAttributes = createRoomNumberAttributes(roomNumber);
+        speechOutput = `OK, you are in room number ${roomNumber}.` ;
+        repromptText = "You can ask me your room number by saying, what's my room number?";
     } else {
-        speechOutput = "I'm not sure what your favorite color is. Please try again.";
-        repromptText = "I'm not sure what your favorite color is. You can tell me your " +
-            'favorite color by saying, my favorite color is red';
+        speechOutput = "I'm not sure what your room number is. Please try again.";
+        repromptText = "I'm not sure what your room number is. You can tell me your " +
+            'room number by saying, my room number is 302';
     }
     
     callback(sessionAttributes,
@@ -109,48 +103,47 @@ function setColorInSession(intent, session, callback) {
 }
 
 /**
- * Sets the name in the session and prepares the speech to reply to the user.
+ * Sets the checkout time in the session and prepares the speech to reply to the user.
  */
-function setNameInSession(intent, session, callback) {
+function setCheckoutTimeInSession(intent, session, callback) {
     const cardTitle = intent.name;
-    const favoriteNameSlot = intent.slots.Name;
+    const checkoutTimeSlot = intent.slots.checkoutTime;
     let repromptText = '';
     let sessionAttributes = {};
     const shouldEndSession = false;
     let speechOutput = '';
 
-    if (favoriteNameSlot) {
-        const favoriteName = favoriteNameSlot.value;
-        sessionAttributes = createFavoriteNameAttributes(favoriteName);
-        speechOutput = `I now know your name is ${favoriteName}. You can ask me ` +
-            "your name by saying, what's my name?";
-        repromptText = "You can ask me your name by saying, what's my name?";
+    if (checkoutTimeSlot) {
+        const checkoutTime = checkoutTimeSlot.value;
+        sessionAttributes = createCheckoutTimeAttributes(checkoutTime);
+        speechOutput = `OK, checkout time is ${checkoutTime}`;
+        repromptText = "You can ask me the checkout time by saying, what is checkout time?";
     } else {
-        speechOutput = "I'm not sure what your name is. Please try again.";
-        repromptText = "I'm not sure what your name is. You can tell me your " +
-            'name by saying, my name is Tom';
+        speechOutput = "I'm not sure what checkout time is. Please try again.";
+        repromptText = "I'm not sure what checkout time is. You can tell me the " +
+            'checkout time by saying, checkout time is noon';
     }
     callback(sessionAttributes,
          buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
-function getColorFromSession(intent, session, callback) {
-    let favoriteColor;
+function getRoomNumberFromSession(intent, session, callback) {
+    let roomNumber;
     const repromptText = null;
     const sessionAttributes = {};
     let shouldEndSession = false;
     let speechOutput = '';
 
     if (session.attributes) {
-        favoriteColor = session.attributes.favoriteColor;
+        roomNumber = session.attributes.roomNumber;
     }
 
-    if (favoriteColor) {
-        speechOutput = `Your favorite color is ${favoriteColor}. Goodbye.`;
+    if (roomNumber) {
+        speechOutput = `Your room number is ${roomNumber}. Goodbye.`;
         shouldEndSession = true;
     } else {
-        speechOutput = "I'm not sure what your favorite color is, you can say, my favorite color " +
-            ' is red';
+        speechOutput = "I'm not sure what your room number is, you can say, my room number " +
+            ' is 302';
     }
 
     // Setting repromptText to null signifies that we do not want to reprompt the user.
@@ -161,23 +154,23 @@ function getColorFromSession(intent, session, callback) {
 }
 
 
-function getNameFromSession(intent, session, callback) {
-    let favoriteName;
+function getCheckoutTimeFromSession(intent, session, callback) {
+    let checkoutTime;
     const repromptText = null;
     const sessionAttributes = {};
     let shouldEndSession = false;
     let speechOutput = '';
 
     if (session.attributes) {
-        favoriteName = session.attributes.favoriteName;
+        checkoutTime = session.attributes.checkoutTime;
     }
 
-    if (favoriteName) {
-        speechOutput = `Your name is ${favoriteName}. Goodbye.`;
+    if (checkoutTime) {
+        speechOutput = `Checkout time is ${checkoutTime}. Goodbye.`;
         shouldEndSession = true;
     } else {
-        speechOutput = "I'm not sure what your name is, you can say, my name " +
-            ' is Bill';
+        speechOutput = "I'm not sure what checkout time is, you can say, my checkout time " +
+            ' is noon';
     }
 
     // Setting repromptText to null signifies that we do not want to reprompt the user.
@@ -217,14 +210,14 @@ function onIntent(intentRequest, session, callback) {
     const intentName = intentRequest.intent.name;
 
     // Dispatch to your skill's intent handlers
-    if (intentName === 'MyColorIsIntent') {
-        setColorInSession(intent, session, callback);
-    } else if (intentName === 'MyNameIsIntent') {
-        setNameInSession(intent, session, callback);
-    } else if (intentName === 'WhatsMyNameIntent') {
-        getNameFromSession(intent, session, callback);
-    } else if (intentName === 'WhatsMyColorIntent') {
-        getColorFromSession(intent, session, callback);
+    if (intentName === 'setRoomNumberIntent') {
+        setRoomNumberInSession(intent, session, callback);
+    } else if (intentName === 'setCheckoutTimeIntent') {
+        setCheckoutTimeInSession(intent, session, callback);
+    } else if (intentName === 'askRoomNumberIntent') {
+        getRoomNumberFromSession(intent, session, callback);
+    } else if (intentName === 'askCheckoutTimeIntent') {
+        getCheckoutTimeFromSession(intent, session, callback);
     } else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
