@@ -1,0 +1,35 @@
+// hiltonIntents.json
+//  to be pasted in on 'Intent Schema' box in Interaction Model screen
+//  (don't paste in the comments!)
+
+{
+  "intents": [
+    {
+      "intent": "setRoomNumberIntent",
+      "slots": [
+        {
+          "name": "roomNumber",
+          "type": "LIST_OF_ROOMS"
+        }
+      ]
+    },
+    {
+      "intent": "setCheckoutTimeIntent",
+      "slots": [
+        {
+          "name": "checkoutTime",
+          "type": "LIST_OF_CHECKOUT_TIMES"
+        }
+      ]
+    },
+    {
+      "intent": "askRoomNumberIntent"
+    },
+    {
+      "intent": "askCheckoutTimeIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}
