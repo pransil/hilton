@@ -1,0 +1,32 @@
+hiltonUtterances.txt
+
+// myColorsSampleUtterances.txt
+//	to be pasted in on 'sample utterances' box in Interaction Model screen
+//  (don't paste in the comments!)
+
+askRoomNumberIntent What's my room number?
+askRoomNumberIntent What room am I in?
+askRoomNumberIntent What room is this?
+askRoomNumberIntent Where am I?
+
+askCheckoutTimeIntent What is checkout time?
+askCheckoutTimeIntent When is checkout time?
+askCheckoutTimeIntent What time is checkout?
+askCheckoutTimeIntent When do I have to checkout?
+askCheckoutTimeIntent What time do I have to checkout?
+
+setRoomNumberIntent My room number is {roomNumber}
+setRoomNumberIntent I'm in {roomNumber}
+setRoomNumberIntent My room is {roomNumber}
+setRoomNumberIntent Room number {roomNumber}
+setRoomNumberIntent Room {roomNumber}
+setRoomNumberIntent Number {roomNumber}
+
+setCheckoutTimeIntent Checkout time is {checkoutTime}
+setCheckoutTimeIntent I have to checkout at {checkoutTime}
+setCheckoutTimeIntent Checkout by {checkoutTime}
+setCheckoutTimeIntent Checkout before {checkoutTime}
+setCheckoutTimeIntent You have to checkout by {checkoutTime}
+setCheckoutTimeIntent I need to checkout by {checkoutTime}
+setCheckoutTimeIntent I need to checkout before {checkoutTime}
+setCheckoutTimeIntent I have to checkout before {checkoutTime}

@@ -1,0 +1,34 @@
+hiltonIntents.txt
+
+
+{
+  "intents": [
+    {
+      "intent": "setRoomNumberIntent",
+      "slots": [
+        {
+          "name": "roomNumber",
+          "type": "LIST_OF_ROOMS"
+        }
+      ]
+    },
+    {
+      "intent": "setCheckoutTimeIntent",
+      "slots": [
+        {
+          "name": "checkoutTime",
+          "type": "LIST_OF_CHECKOUT_TIMES"
+        }
+      ]
+    },
+    {
+      "intent": "askRoomNumberIntent"
+    },
+    {
+      "intent": "askCheckoutTimeIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}

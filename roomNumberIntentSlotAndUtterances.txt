@@ -1,0 +1,6 @@
+roomNumberIntentSlotAndUtterances.txt
+
+// Intent, Custom Slot and Utterances text.
+// To be pasted into Interaction Model page:
+// https://developer.amazon.com/edw/home.html#/skill/amzn1.ask.skill.cb6f774e-2f81-42ab-b9e7-1ee55abfe68a/en_US/intentSchema/list
+

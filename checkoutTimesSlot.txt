@@ -1,0 +1,10 @@
+checkoutTimeSlot.txt
+
+// Create a custom slot of type LIST_OF_CHECKOUT_TIMES and paste in these values
+//	to be pasted in on 'Custom Slot Types' box in Interaction Model screen
+//  (don't paste in the comments!)
+
+10 AM
+11 AM
+12 PM
+1 PM

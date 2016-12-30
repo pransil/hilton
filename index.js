@@ -2,7 +2,7 @@
 
 /**
  * Example of the kinds of things that could be done for a hotel.
- * 
+ *
  */
 
 

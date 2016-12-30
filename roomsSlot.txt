@@ -1,0 +1,18 @@
+roomsSlot.txt
+
+// Create a custom slot of type LIST_OF_ROOMS and paste in these values
+//	to be pasted in on 'Custom Slot Types' box in Interaction Model screen
+//  (don't paste in the comments!)
+
+
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
