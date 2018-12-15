@@ -4,6 +4,8 @@ Started with code from myColorsNames project. Modified to do a few things that
 might be useful in a hotel room.
  - What's my room number?
  - What time is checkout?
+ 
+ Other things to add later:
  - Does this hotel have a cafe / restaurant?
  - What are today's specials in the restaurant?
  - Room Service (response lists 4 items with prices)
